@@ -1,0 +1,352 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  /* Slide up under the transparent sticky header so the background
+     gradient runs edge to edge with no seam below the nav. */
+  margin-top: calc(-1 * var(--header-height));
+  padding-block: calc(var(--header-height) + clamp(3rem, 7vw, 5.5rem))
+    clamp(3.5rem, 8vw, 6rem);
+  background: radial-gradient(
+      ellipse 90% 55% at 50% -10%,
+      rgba(37, 99, 235, 0.24) 0%,
+      transparent 62%
+    ),
+    var(--color-bg);
+}
+
+/* ---------- decorative background ---------- */
+
+.hero__rays {
+  position: absolute;
+  inset: -25% -10% auto -10%;
+  height: 130%;
+  background: repeating-linear-gradient(
+      118deg,
+      transparent 0 46px,
+      rgba(96, 165, 250, 0.1) 46px 47px
+    ),
+    repeating-linear-gradient(
+      62deg,
+      transparent 0 46px,
+      rgba(37, 99, 235, 0.08) 46px 47px
+    );
+  mask-image: radial-gradient(
+    ellipse 60% 50% at 50% 22%,
+    #000 0%,
+    transparent 74%
+  );
+  pointer-events: none;
+  animation: raysDrift 26s var(--ease-in-out) infinite alternate;
+}
+
+@keyframes raysDrift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-2%, 1.5%, 0) scale(1.05);
+  }
+}
+
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      rgba(148, 163, 184, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 80%);
+  pointer-events: none;
+}
+
+.hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+.hero__orb--one {
+  top: -160px;
+  left: -140px;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(
+    circle,
+    rgba(37, 99, 235, 0.36) 0%,
+    transparent 70%
+  );
+  animation: orbFloat 18s var(--ease-in-out) infinite alternate;
+}
+
+.hero__orb--two {
+  bottom: -240px;
+  right: -120px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.26) 0%,
+    transparent 70%
+  );
+  animation: orbFloat 22s var(--ease-in-out) infinite alternate-reverse;
+}
+
+@keyframes orbFloat {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(40px, -30px, 0);
+  }
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- centred copy ---------- */
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-5);
+  max-width: 940px;
+  margin-inline: auto;
+  animation: heroIn 800ms var(--ease-out) both;
+}
+
+@keyframes heroIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero__title {
+  margin: 0;
+  max-width: 26ch;
+}
+
+.hero__lead {
+  margin: 0;
+  max-width: 66ch;
+  font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
+  color: var(--color-text-body);
+}
+
+.hero__assurances {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3) var(--space-6);
+}
+
+.hero__assurances li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.hero__assurances svg {
+  color: var(--blue-400);
+  flex: none;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+/* ---------- figure ---------- */
+
+.hero__figure {
+  margin: clamp(1.5rem, 4vw, 3rem) auto 0;
+  max-width: 880px;
+  animation: heroIn 900ms 140ms var(--ease-out) both;
+}
+
+/* No frame: the artwork's background matches the page, so a border would
+   just draw a box around empty space. A soft aura grounds it instead. */
+/* The float lives here so the image and its labels move together. */
+.hero__visual {
+  position: relative;
+  animation: figureFloat 11s var(--ease-in-out) infinite alternate;
+}
+
+.hero__visual::before {
+  content: "";
+  position: absolute;
+  inset: 18% 6% 4%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    rgba(37, 99, 235, 0.42) 0%,
+    rgba(37, 99, 235, 0) 70%
+  );
+  filter: blur(58px);
+  pointer-events: none;
+}
+
+.hero__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes figureFloat {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-12px);
+  }
+}
+
+/* ---------- labels overlaid on the diagram ---------- */
+
+.hero__labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero__label {
+  position: absolute;
+  /* anchored by its bottom-centre, so it sits above its tower */
+  transform: translate(-50%, -100%);
+  padding-bottom: 7px;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #cadefc;
+  text-shadow: 0 1px 5px rgba(4, 6, 14, 0.95), 0 0 16px rgba(4, 6, 14, 0.85);
+  animation: labelIn 500ms var(--ease-out) both;
+  animation-delay: calc(700ms + var(--i) * 90ms);
+}
+
+@keyframes labelIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-100% + 8px));
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -100%);
+  }
+}
+
+/* ---------- legend ---------- */
+
+.hero__figure figcaption {
+  margin-top: var(--space-2);
+}
+
+.stack-legend {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4) var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border-soft);
+}
+
+@media (max-width: 800px) {
+  .stack-legend {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+.stack-legend li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.stack-legend strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-heading);
+}
+
+.stack-legend__swatch {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  margin-top: 6px;
+  border-radius: 3px;
+  border: 1px solid rgba(96, 165, 250, 0.5);
+}
+
+.stack-legend__swatch--app {
+  background: linear-gradient(140deg, #26344f, #16203a);
+}
+
+.stack-legend__swatch--core {
+  background: var(--grad-primary);
+  border-color: rgba(147, 197, 253, 0.7);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+}
+
+.stack-legend__swatch--base {
+  background: linear-gradient(140deg, #18233d, #0b1322);
+}
+
+
+/* Below this width the labels are closer together than they are wide, so
+   they would collide. The legend underneath carries the naming instead. */
+@media (max-width: 900px) {
+  .hero__labels {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__visual {
+    animation: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero__actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .hero__assurances {
+    gap: var(--space-2) var(--space-4);
+  }
+
+  .hero__figure {
+    max-width: 480px;
+  }
+}

@@ -1,0 +1,86 @@
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  /* Runs up behind the transparent sticky header — see Hero.css */
+  margin-top: calc(-1 * var(--header-height));
+  padding-block: calc(var(--header-height) + clamp(3rem, 6vw, 4.5rem))
+    clamp(2.5rem, 5vw, 4rem);
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.1) 0%, transparent 70%),
+    var(--color-bg);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.page-hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      rgba(148, 163, 184, 0.07) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 80% at 50% 0%, #000 20%, transparent 75%);
+  pointer-events: none;
+}
+
+.page-hero__aura {
+  top: -180px;
+  left: 50%;
+  width: 640px;
+  height: 420px;
+  transform: translateX(-50%);
+  opacity: 0.45;
+}
+
+.page-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+  max-width: 72ch;
+}
+
+.page-hero__title {
+  margin: 0;
+  font-size: var(--text-4xl);
+}
+
+.page-hero__lead {
+  margin: 0;
+  max-width: 60ch;
+}
+
+.page-hero__extra {
+  width: 100%;
+}
+
+/* ---- breadcrumbs ---- */
+
+.breadcrumbs ol {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.breadcrumbs li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.breadcrumbs a {
+  color: var(--color-text-muted);
+}
+
+.breadcrumbs a:hover {
+  color: var(--blue-300);
+}
+
+.breadcrumbs svg {
+  opacity: 0.5;
+}

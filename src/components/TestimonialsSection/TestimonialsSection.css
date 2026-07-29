@@ -1,0 +1,86 @@
+.testimonials__stage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.testimonials__viewport {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  display: grid;
+}
+
+/* All slides occupy the same cell; only the active one is visible. */
+.testimonials__slide {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px) scale(0.985);
+  transition: opacity var(--dur-base) var(--ease-out),
+    transform var(--dur-base) var(--ease-out),
+    visibility var(--dur-base) var(--ease-out);
+}
+
+.testimonials__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.testimonials__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.testimonials__arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.testimonials__arrow:first-child svg {
+  transform: rotate(180deg);
+}
+
+.testimonials__arrow:hover {
+  background: var(--blue-600);
+  border-color: var(--blue-500);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.testimonials__dots {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.testimonials__dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+  cursor: pointer;
+  transition: width var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out);
+}
+
+.testimonials__dot.is-active {
+  width: 26px;
+  border-radius: var(--radius-pill);
+  background: var(--blue-500);
+}
