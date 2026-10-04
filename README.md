@@ -1,5 +1,28 @@
 # Foxtheta — Marketing Website
 
+> **Current handoff (2026-10-01):** Start with [CLAUDE.md](CLAUDE.md) and [the Claude Code handoff](handoff/CLAUDE-HANDOFF.md). The site now uses a white/green/lavender design, GSAP illustrations and an interactive service explorer. Some original documentation below is historical, including its dark-theme, font and animation descriptions.
+
+## Working on this project (start here)
+
+Current state, newer than the historical sections further down:
+
+- **Live site:** https://foxtheta.netlify.app (Netlify site `foxtheta`).
+- **Themes:** light and dark. The sun/moon button in the header switches them; the first visit follows the OS setting. Dark colours live in `src/styles/dark.css`.
+- **Diagrams:** original SVG + GSAP scenes in `src/components/MotionDiagram/`. They play on their own when on screen and pause off screen or with the Pause button. Diagram dark colours are generated: after changing any diagram colour, run `node scripts/generate-dark-diagrams.mjs` (writes `src/styles/dark-diagrams.css`; do not edit that file by hand).
+- **Fonts:** the site uses Inter + Chivo Mono. The Neue Alte Grotesk files used for local design preview are personal-use demos and are deliberately **not** in Git. Without them the site uses Inter, exactly like the live site.
+- **Content:** copy, services and contact details live in `src/data/`. Do not invent clients, testimonials or metrics; several proof sections are intentionally switched off (see below).
+
+Setup and checks (Node 24):
+
+```bash
+npm ci
+npm run dev
+npm run lint
+npm run build
+```
+
+Suggested workflow: make a branch, commit, push it and open a pull request into `main`, so changes can be reviewed before they go live. Deploying is a separate step: `npm run build` then `netlify deploy --prod --dir=dist` (needs access to the Netlify site).
+
 > **Strategic Intelligence. Real Impact.**
 
 The marketing site for **Foxtheta**, an AI development company building agents, RAG knowledge systems, workflow automation and custom AI applications.

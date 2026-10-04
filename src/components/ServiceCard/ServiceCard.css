@@ -3,12 +3,14 @@
   --my: 0%;
 
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   padding: var(--space-6);
   border-radius: var(--radius-xl);
   border: 1px solid var(--color-border);
   background: var(--grad-panel);
+  box-shadow: var(--shadow-sm);
   color: inherit;
   isolation: isolate;
   transition: transform var(--dur-base) var(--ease-out),
@@ -22,7 +24,7 @@
   transform: translateY(-6px);
   border-color: var(--color-border-accent);
   background: var(--grad-panel-hover);
-  box-shadow: var(--glow-blue-soft);
+  box-shadow: var(--shadow-lg);
   color: inherit;
 }
 
@@ -53,36 +55,45 @@
   font-size: var(--text-sm);
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--color-text-muted);
-  opacity: 0.5;
+  color: var(--color-text-subtle);
+  opacity: 1;
   transition: color var(--dur-base) var(--ease-out),
     opacity var(--dur-base) var(--ease-out);
 }
 
 .service-card:hover .service-card__number {
-  color: var(--blue-300);
+  color: var(--color-primary);
   opacity: 1;
+}
+
+.service-card:hover .service-card__hint {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #ffffff;
 }
 
 /* ---- the two swapping faces ---- */
 
 .service-card__faces {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   min-height: 216px;
 }
 
 .service-card__face {
   display: flex;
   flex-direction: column;
+  min-width: 0;
   transition: opacity var(--dur-base) var(--ease-out),
     transform var(--dur-base) var(--ease-out);
 }
 
 .service-card__face--front {
   position: relative;
-  height: 100%;
-  justify-content: space-between;
+  flex: 1;
+  justify-content: flex-start;
   gap: var(--space-5);
   opacity: 1;
   transform: translateY(0);
@@ -91,7 +102,7 @@
 .service-card__face--back {
   position: absolute;
   inset: 0;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--space-3);
   opacity: 0;
   transform: translateY(14px);
@@ -119,9 +130,9 @@
   width: 56px;
   height: 56px;
   border-radius: var(--radius-lg);
-  background: rgba(59, 130, 246, 0.13);
-  border: 1px solid rgba(59, 130, 246, 0.26);
-  color: var(--blue-300);
+  background: var(--color-primary-tint);
+  border: 1px solid var(--color-primary-tint-strong);
+  color: var(--color-primary);
   transition: background-color var(--dur-base) var(--ease-out),
     color var(--dur-base) var(--ease-out),
     transform var(--dur-base) var(--ease-out);
@@ -142,16 +153,22 @@
   letter-spacing: -0.025em;
   color: var(--color-heading);
   max-width: 15ch;
+  /* two lines reserved, so the arrow below sits at one height per row */
+  min-height: calc(2 * 1.25em);
 }
 
 .service-card__hint {
   display: inline-grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
+  margin-top: auto;
   border-radius: 50%;
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
+  transition: border-color var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out),
+    color var(--dur-base) var(--ease-out);
 }
 
 /* ---- back face ---- */
@@ -160,7 +177,7 @@
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 700;
-  color: var(--blue-300);
+  color: var(--color-primary);
   letter-spacing: -0.01em;
 }
 
@@ -174,10 +191,10 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  margin-top: var(--space-2);
+  margin-top: auto;
   font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--white);
+  color: var(--color-primary);
 }
 
 .service-card__more svg {

@@ -5,7 +5,7 @@
  */
 
 export const privacyMeta = {
-  lastUpdated: "1 January 2026",
+  lastUpdated: "13 September 2026",
   intro:
     "This policy explains what information Foxtheta collects when you visit this website or contact us, how that information is used, and the choices available to you. It applies to this website only and not to any client systems we build or operate.",
 };

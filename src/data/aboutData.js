@@ -45,38 +45,6 @@ export const values = [
   },
 ];
 
-/** PLACEHOLDER team — replace names, roles, bios and initials. */
-export const team = [
-  {
-    id: "1",
-    name: "Placeholder Name",
-    role: "Founder & CEO",
-    bio: "Leads strategy and client partnerships. Background in enterprise data platforms and applied machine learning.",
-    initials: "PN",
-  },
-  {
-    id: "2",
-    name: "Placeholder Name",
-    role: "Head of AI Engineering",
-    bio: "Owns agent architecture, evaluation and model operations across every engagement.",
-    initials: "PN",
-  },
-  {
-    id: "3",
-    name: "Placeholder Name",
-    role: "Principal Product Engineer",
-    bio: "Builds the interfaces and platforms that put AI in front of the people who use it daily.",
-    initials: "PN",
-  },
-  {
-    id: "4",
-    name: "Placeholder Name",
-    role: "Delivery Lead",
-    bio: "Keeps scope honest and timelines real, from discovery workshop through handover.",
-    initials: "PN",
-  },
-];
-
 /**
  * Company timeline — currently unused.
  *

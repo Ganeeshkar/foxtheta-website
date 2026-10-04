@@ -1,0 +1,6 @@
+.service-figure {--figure-color:#64da86;--figure-fill:#b9efc7;--figure-tint:#e9faed;--figure-stroke:#91b99d;width:100%;}
+.service-figure--integrations {--figure-color:#8bbce1;--figure-fill:#c2ddf3;--figure-tint:#edf5fc;--figure-stroke:#a2bdce;}
+.service-figure--custom-ai-applications,.service-figure--rag-knowledge-systems {--figure-color:#d29be5;--figure-fill:#e6c4f1;--figure-tint:#f5eafa;--figure-stroke:#b79ac5;}
+.service-figure text {font:11px var(--font-mono);fill:#536e5d;letter-spacing:-.04em;}
+.service-figure>svg {width:100%;height:auto;overflow:visible;stroke-width:.85;}
+.service-figure .precision-scene__footer {color:#728777;}

@@ -1,0 +1,9 @@
+Open the extracted project folder in Claude Code and paste:
+
+Read CLAUDE.md and handoff/CLAUDE-HANDOFF.md. Continue this existing Foxtheta website redesign from its current state. Start by running the project and reviewing the homepage, six service illustrations and mobile layout against the documented Baseten direction. Identify the remaining visual and motion gaps, then refine them in focused steps. Preserve actual business content, accessibility and existing work. Keep demo fonts development-only and do not deploy. The logo concept is not yet approved. Run build/lint and visually verify your changes. Give concise progress updates.
+
+Install: npm ci
+Run: npm run dev -- --host 127.0.0.1
+View: http://127.0.0.1:5173/
+
+On the original computer you can open G:\foxtheta-website\fox-theta_Final directly in Claude Code; extraction is unnecessary there.

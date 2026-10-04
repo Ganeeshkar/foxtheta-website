@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
-import PageHero from "../components/PageHero/PageHero";
+import ServiceHero from "../components/MotionDiagram/ServiceHero";
+import RagScene from "../components/MotionDiagram/RagScene";
 import CTASection from "../components/CTASection/CTASection";
 import Reveal from "../components/Reveal/Reveal";
 import Icon from "../components/Icon/Icon";
@@ -26,22 +27,11 @@ function ServiceDetailView({ service }) {
 
   return (
     <>
-      <PageHero
-        eyebrow="Service"
-        title={service.title}
-        lead={service.tagline}
-        breadcrumbs={[
-          { label: "Home", to: "/" },
-          { label: "Services", to: "/services" },
-          { label: service.title },
-        ]}
-      >
-        <span className="service-detail__hero-icon" aria-hidden="true">
-          <Icon name={service.icon} size={30} />
-        </span>
-      </PageHero>
+      <ServiceHero service={service} />
 
-      <div className="service-detail section">
+      {service.slug === "rag-knowledge-systems" && <div className="service-detail__rag"><RagScene servicePage /></div>}
+
+      <div className={`service-detail service-detail--${service.slug} section`}>
         <div className="container service-detail__layout">
           <article className="service-detail__main">
             <Reveal as="section" className="service-detail__block">

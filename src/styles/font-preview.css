@@ -1,0 +1,6 @@
+/* Applied only when the local demo font files exist (see src/main.jsx).
+   Replace with licensed webfonts before enabling in production. */
+:root {--font-body:"Neue Alte Grotesk Preview","Inter",Arial,sans-serif;--font-display:"Neue Alte Grotesk Preview","Inter",Arial,sans-serif;}
+.hero__title {letter-spacing:-.02em;}
+.services__intro h2,.service-masthead__copy h1,.service-explorer__copy h3 {letter-spacing:-.025em;}
+

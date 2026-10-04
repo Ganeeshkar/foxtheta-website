@@ -9,7 +9,6 @@ export default function NotFound() {
 
   return (
     <section className="notfound">
-      <div className="aura aura--blue notfound__aura" aria-hidden="true" />
 
       <div className="container notfound__inner">
         <span className="notfound__code">404</span>

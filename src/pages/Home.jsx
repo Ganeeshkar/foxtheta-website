@@ -1,3 +1,4 @@
+import RagScene from "../components/MotionDiagram/RagScene";
 import Hero from "../components/Hero/Hero";
 import ServicesGrid from "../components/ServicesGrid/ServicesGrid";
 import ApproachSection from "../components/ApproachSection/ApproachSection";
@@ -15,6 +16,7 @@ export default function Home() {
     <>
       <Hero />
       <ServicesGrid />
+      <RagScene />
       <ApproachSection />
       <FaqSection />
       <CTASection />

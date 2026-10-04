@@ -2,14 +2,6 @@
   overflow: hidden;
 }
 
-.faq__aura {
-  top: 8%;
-  left: -14%;
-  width: 520px;
-  height: 480px;
-  opacity: 0.22;
-}
-
 .faq__layout {
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
@@ -65,7 +57,7 @@
 }
 
 .faq__aside-email:hover {
-  color: var(--blue-300);
+  color: var(--color-primary);
   border-bottom-color: currentColor;
 }
 
@@ -125,7 +117,7 @@
 }
 
 .faq__item.is-open .faq__number {
-  color: var(--blue-400);
+  color: var(--color-primary);
 }
 
 .faq__question {
@@ -147,7 +139,7 @@
   flex: none;
   border-radius: 50%;
   border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--color-surface-sunken);
   color: var(--color-text-body);
   transition: transform var(--dur-base) var(--ease-out),
     background-color var(--dur-base) var(--ease-out),

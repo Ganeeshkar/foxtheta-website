@@ -22,7 +22,7 @@
 export const services = [
   {
     slug: "ai-agent-development",
-    title: "AI Agent Development",
+    title: "AI Development",
     icon: "agent",
     short:
       "We build autonomous and human-in-the-loop agents that reason over your tools, data and business rules. Each agent ships with guardrails, evaluations and observability so you can trust what it does unsupervised.",
@@ -206,36 +206,6 @@ export const services = [
     stack: ["React", "React Native", "Vite", "TypeScript", "Node.js", "Expo"],
   },
 
-  {
-    slug: "saas-platform-development",
-    title: "SaaS Platform Development",
-    icon: "cloud",
-    short:
-      "Multi-tenant platforms built to be sold: authentication, billing, roles, analytics and admin tooling from day one. We help founders and enterprise teams get from concept to a product that can carry paying customers.",
-    tagline:
-      "The platform foundations that are painful to retrofit — built in from the start.",
-    overview: [
-      "Every SaaS product needs the same unglamorous foundations before it can take a single customer: tenant isolation, authentication and SSO, role-based permissions, subscription billing, usage metering, audit logs and an admin console your support team can actually use. Building these late is expensive; building them wrong is worse.",
-      "Foxtheta builds those foundations properly and early, then layers your differentiated product on top. We design tenancy for the scale you are realistically heading toward, wire metering to your pricing model so usage-based plans are possible later, and make enterprise requirements like SSO and audit trails available before your first large prospect asks for them.",
-      "We also build for the operational reality of running a platform — staged rollouts, feature flags, tenant-level configuration, sensible on-call signals and a support console that resolves customer issues without a database query. The goal is a product your team can run, sell and evolve without us.",
-    ],
-    benefits: [
-      "Secure multi-tenant architecture with isolation verified by automated tests",
-      "Subscription billing and usage metering wired to your pricing model",
-      "SSO, RBAC and audit logging ready before enterprise buyers ask",
-      "Feature flags and staged rollouts for safe continuous shipping",
-      "Admin and support tooling that removes engineers from the support path",
-    ],
-    included: [
-      "Platform and tenancy architecture",
-      "Authentication, SSO and RBAC",
-      "Billing, plans and usage metering",
-      "Core product build",
-      "Admin console and support tooling",
-      "Infrastructure, CI/CD and observability",
-    ],
-    stack: ["Node.js", "Postgres", "Stripe", "Auth0", "Kubernetes", "Terraform"],
-  },
 ];
 
 /** Look up one service by its URL slug. Returns undefined if not found. */

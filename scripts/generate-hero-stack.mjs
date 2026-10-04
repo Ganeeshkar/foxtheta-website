@@ -94,7 +94,7 @@ const OUT_H = Math.round((OUT_W * VB.h) / VB.w);
 
 const html = `<!doctype html>
 <html><head><meta charset="utf-8"><style>
-  html,body{margin:0;padding:0;background:#04060e;}
+  html,body{margin:0;padding:0;background:transparent;}
   svg{display:block;width:${OUT_W}px;height:${OUT_H}px;}
   .lbl{font-family:Inter,system-ui,sans-serif;font-size:12px;font-weight:700;
        letter-spacing:.06em;text-transform:uppercase;fill:#c3d8fb;

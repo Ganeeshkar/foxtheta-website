@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import Icon from "../Icon/Icon";
+import ThemeToggle from "./ThemeToggle";
 import { navLinks } from "../../data/navLinks";
 import { services } from "../../data/servicesData";
 import "./Header.css";
@@ -9,9 +10,9 @@ import "./Header.css";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [megaOpen, setMegaOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const location = useLocation();
+  const headerRef = useRef(null);
 
   /* Solidify the header once the page scrolls away from the hero. */
   useEffect(() => {
@@ -24,13 +25,15 @@ export default function Header() {
   /* Close every menu whenever the route changes. */
   useEffect(() => {
     setMobileOpen(false);
-    setMegaOpen(false);
     setMobileServicesOpen(false);
   }, [location.pathname, location.hash]);
 
   /* Lock body scroll while the mobile drawer is open. */
   useEffect(() => {
     document.body.classList.toggle("is-locked", mobileOpen);
+    if (mobileOpen && headerRef.current) {
+      headerRef.current.style.setProperty("--mobile-nav-top", headerRef.current.getBoundingClientRect().bottom + "px");
+    }
     return () => document.body.classList.remove("is-locked");
   }, [mobileOpen]);
 
@@ -38,7 +41,6 @@ export default function Header() {
   useEffect(() => {
     const onKeyDown = (event) => {
       if (event.key !== "Escape") return;
-      setMegaOpen(false);
       setMobileOpen(false);
     };
     window.addEventListener("keydown", onKeyDown);
@@ -46,100 +48,33 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`header ${scrolled ? "is-scrolled" : ""}`}>
+    <header ref={headerRef} className={`header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="header__inner container">
         <Logo size={38} />
 
         {/* ---------- desktop navigation ---------- */}
         <nav className="nav" aria-label="Primary">
           <ul className="nav__list">
-            {navLinks.map((link) =>
-              link.type === "services" ? (
-                <li
-                  key={link.label}
-                  className="nav__item nav__item--has-menu"
-                  onMouseEnter={() => setMegaOpen(true)}
-                  onMouseLeave={() => setMegaOpen(false)}
-                  onBlur={(event) => {
-                    if (!event.currentTarget.contains(event.relatedTarget)) {
-                      setMegaOpen(false);
-                    }
-                  }}
+            {navLinks.map((link) => (
+              <li key={link.label} className="nav__item">
+                <NavLink
+                  to={link.to}
+                  end={link.to === "/"}
+                  className={({ isActive }) =>
+                    `nav__link ${isActive ? "is-active" : ""}`
+                  }
                 >
-                  <NavLink
-                    to={link.to}
-                    className={({ isActive }) =>
-                      `nav__link ${isActive ? "is-active" : ""}`
-                    }
-                    aria-haspopup="true"
-                    aria-expanded={megaOpen}
-                  >
-                    {link.label}
-                    <Icon name="chevronDown" size={15} className="nav__caret" />
-                  </NavLink>
-
-                  <div
-                    className={`mega ${megaOpen ? "is-open" : ""}`}
-                    role="group"
-                    aria-label="Services"
-                  >
-                    <div className="mega__inner">
-                      <ul className="mega__grid">
-                        {services.map((service) => (
-                          <li key={service.slug}>
-                            <Link
-                              to={`/services/${service.slug}`}
-                              className="mega__item"
-                            >
-                              <span className="mega__icon">
-                                <Icon name={service.icon} size={20} />
-                              </span>
-                              <span className="mega__copy">
-                                <span className="mega__title">
-                                  {service.title}
-                                </span>
-                                <span className="mega__tagline">
-                                  {service.tagline}
-                                </span>
-                              </span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-
-                      <div className="mega__footer">
-                        <p className="mega__footer-text">
-                          Not sure which one you need? Tell us the problem and
-                          we will scope it with you.
-                        </p>
-                        <Link to="/contact" className="link-arrow">
-                          Talk to an engineer
-                          <Icon name="arrow" size={18} className="icon--arrow" />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              ) : (
-                <li key={link.label} className="nav__item">
-                  <NavLink
-                    to={link.to}
-                    end={link.to === "/"}
-                    className={({ isActive }) =>
-                      `nav__link ${isActive ? "is-active" : ""}`
-                    }
-                  >
-                    {link.label}
-                  </NavLink>
-                </li>
-              )
-            )}
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </nav>
 
         <div className="header__actions">
+          <ThemeToggle />
           <Link to="/contact" className="btn btn--primary btn--sm header__cta">
-            Get in Touch
+            Start a conversation
             <Icon name="arrow" size={17} className="icon--arrow" />
           </Link>
 

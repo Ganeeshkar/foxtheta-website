@@ -1,4 +1,5 @@
 import PageHero from "../components/PageHero/PageHero";
+import PageScene from "../components/MotionDiagram/PageScene";
 import ServicesGrid from "../components/ServicesGrid/ServicesGrid";
 import ApproachSection from "../components/ApproachSection/ApproachSection";
 import CTASection from "../components/CTASection/CTASection";
@@ -14,15 +15,18 @@ export default function Services() {
     <>
       <PageHero
         eyebrow="Services"
-        title="Seven practice areas, one delivery team"
+        title="Six practice areas, one delivery team"
         lead="We scope narrowly and build deeply. Most projects combine two or three of these into a single roadmap with one accountable team behind it."
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Services" }]}
+        visual={<PageScene kind="services" />}
+        accent="green"
       />
 
       <ServicesGrid
         eyebrow="Capabilities"
         title="Choose a starting point"
-        lead="Open any card for scope, key benefits and what a delivery actually includes."
+        lead="Explore the scope, key benefits and deliverables for each service."
+        showCta={false}
       />
 
       <ApproachSection />

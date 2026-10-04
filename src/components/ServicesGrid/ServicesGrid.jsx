@@ -1,53 +1,21 @@
 import { Link } from "react-router-dom";
-import ServiceCard from "../ServiceCard/ServiceCard";
-import SectionHeading from "../SectionHeading/SectionHeading";
-import Reveal from "../Reveal/Reveal";
 import Icon from "../Icon/Icon";
+import ServiceExplorer from "./ServiceExplorer";
 import { services } from "../../data/servicesData";
 import "./ServicesGrid.css";
-
-export default function ServicesGrid({
-  eyebrow = "What we build",
-  title = "Capabilities that carry a project from idea to production",
-  lead = "Seven focused practice areas. Hover a card for the short version, open it for the full picture.",
-  showCta = true,
-  limit,
-}) {
-  const items = limit ? services.slice(0, limit) : services;
-
-  return (
-    <section className="services section" id="services">
-      <div className="aura aura--blue services__aura" aria-hidden="true" />
-
-      <div className="container">
-        <SectionHeading eyebrow={eyebrow} title={title} lead={lead} />
-
-        <ul className="services__grid">
-          {items.map((service, index) => (
-            <Reveal
-              as="li"
-              key={service.slug}
-              delay={(index % 3) * 90}
-              className="services__cell"
-            >
-              <ServiceCard service={service} index={index} />
-            </Reveal>
-          ))}
-        </ul>
-
-        {showCta && (
-          <Reveal className="services__footer">
-            <p className="services__footer-text">
-              Most projects need two or three of these together. Tell us the
-              outcome you need and we will propose the shortest path to it.
-            </p>
-            <Link to="/contact" className="btn btn--secondary">
-              Scope a project
-              <Icon name="arrow" size={18} className="icon--arrow" />
-            </Link>
-          </Reveal>
-        )}
-      </div>
-    </section>
-  );
+const summaries = {
+ "ai-agent-development": "Agents that work across your tools, with the evaluations and oversight to make every action accountable.",
+ "rag-knowledge-systems": "Turn documents, wikis and databases into answers your team can verify. Permission-aware, with sources attached.",
+ "workflow-automation": "Connect the repetitive steps in your operations. Automate the routine and route exceptions to the right people.",
+ "custom-ai-applications": "Copilots, document processors and decision tools, designed around the way your business actually works.",
+ "integrations": "Reliable connections between AI and your CRM, ERP, data warehouse, ticketing systems and internal APIs.",
+ "web-mobile-applications": "Fast, accessible products for web, iOS and Android. Carefully built interfaces and code your team can own."
+};
+export default function ServicesGrid({ eyebrow = "Our capabilities", title = "Built around your business.\nEngineered for production.", lead = "Six connected capabilities. One team from the first question to the final deployment.", showCta = true, limit }) {
+ const items=limit?services.slice(0,limit):services;
+ return <section className="services section" id="services"><div className="container">
+   <div className="services__intro"><span className="eyebrow">{eyebrow}</span><h2>{title.split("\n").map(line=><span key={line}>{line}</span>)}</h2><p>{lead}</p></div>
+   <ServiceExplorer items={items} summaries={summaries} />
+   {showCta&&<div className="services__footer"><p>Most projects bring two or three of these together.</p><Link to="/services" className="link-arrow">Explore all services <Icon name="arrow" size={16}/></Link></div>}
+ </div></section>;
 }

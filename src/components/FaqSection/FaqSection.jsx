@@ -18,7 +18,6 @@ export default function FaqSection() {
 
   return (
     <section className="faq section section--alt" aria-labelledby="faq-title">
-      <div className="aura aura--blue faq__aura" aria-hidden="true" />
 
       <div className="container faq__layout">
         <Reveal className="faq__intro">
@@ -82,6 +81,7 @@ export default function FaqSection() {
                   className="faq__panel"
                   id={`faq-panel-${item.id}`}
                   role="region"
+                  aria-hidden={!isOpen}
                   aria-labelledby={`faq-trigger-${item.id}`}
                 >
                   <div className="faq__answer">

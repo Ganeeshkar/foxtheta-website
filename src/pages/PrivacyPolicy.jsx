@@ -35,16 +35,6 @@ export default function PrivacyPolicy() {
           </nav>
 
           <article className="privacy__body">
-            <div className="privacy__notice" role="note">
-              <Icon name="shield" size={20} />
-              <p>
-                <strong>Placeholder text.</strong> This policy is sample copy
-                provided as a formatting starting point. Replace every section
-                with wording reviewed by your own legal counsel before
-                publishing.
-              </p>
-            </div>
-
             <p className="privacy__updated">
               Last updated: {privacyMeta.lastUpdated}
             </p>
@@ -80,10 +70,8 @@ export default function PrivacyPolicy() {
               <h2 className="privacy__h2">Questions about this policy</h2>
               <p className="privacy__p">
                 Write to{" "}
-                <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a> or
-                call {siteConfig.phoneDisplay}. Postal enquiries can be sent to{" "}
-                {siteConfig.address.line1}, {siteConfig.address.line2},{" "}
-                {siteConfig.address.country}.
+                <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>{" "}
+                and we will respond within one business day.
               </p>
             </div>
           </article>

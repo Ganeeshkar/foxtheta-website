@@ -1,42 +1,18 @@
-import SectionHeading from "../SectionHeading/SectionHeading";
-import Reveal from "../Reveal/Reveal";
+import { Link } from "react-router-dom";
 import Icon from "../Icon/Icon";
-import { approach } from "../../data/approachData";
+import ApproachGlyph from "./ApproachGlyph";
+import useInView from "../../hooks/useInView";
 import "./ApproachSection.css";
-
+const commitments = [
+  { label: "Prove it first", title: "A focused pilot. A clear decision.", text: "Test a tightly scoped system on your real data in 4–6 weeks. Agree on the baseline, measure the result and decide what deserves a full build.", detail: "01 / Start with evidence" },
+  { label: "Build it properly", title: "The whole system, accounted for.", text: "Data, models, interfaces and deployment. We take responsibility for the connections between them, with access controls and audit trails built in.", detail: "02 / Engineer for production" },
+  { label: "Make it yours", title: "Your team stays in control.", text: "You own the code and infrastructure. We hand over documentation, evaluations and a system your engineers can operate and extend.", detail: "03 / Transfer the knowledge" },
+];
 export default function ApproachSection() {
-  return (
-    <section className="approach section">
-      <div className="aura aura--blue approach__aura" aria-hidden="true" />
-
-      <div className="container">
-        <SectionHeading
-          eyebrow="Our approach"
-          title="How Foxtheta gets AI into production"
-          lead="Four commitments that shape every engagement — from the first scoping call to the handover."
-        />
-
-        <ul className="approach__grid">
-          {approach.map((item, index) => (
-            <Reveal
-              as="li"
-              key={item.id}
-              delay={index * 90}
-              className="approach__item"
-            >
-              <span className="approach__icon">
-                <Icon name={item.icon} size={26} />
-              </span>
-              <span className="approach__rule" aria-hidden="true" />
-              <h3 className="approach__title">{item.title}</h3>
-              <p className="approach__text">{item.description}</p>
-              <span className="approach__step" aria-hidden="true">
-                0{index + 1}
-              </span>
-            </Reveal>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
+  const [grid, drawn] = useInView({ threshold: 0.3, once: false, respectReducedMotion: false });
+  return <section className="approach section"><div className="container">
+    <div className="approach__header"><span className="eyebrow">Our approach</span><h2>Good engineering.<br /><span>No guesswork.</span></h2><p>A small team. Direct conversations. One shared definition of what working means.</p></div>
+    <ol ref={grid} className={`approach__grid ${drawn ? "is-drawn" : ""}`}>{commitments.map((item, index) => <li className="approach__item" key={item.label}><ApproachGlyph index={index} /><span className="approach__step">{item.detail}</span><h3>{item.title}</h3><p>{item.text}</p><span className="approach__label">{item.label}<Icon name="check" size={15} /></span></li>)}</ol>
+    <div className="approach__bottom"><p>Built around the unglamorous details that make AI dependable.</p><Link to="/about" className="link-arrow">Meet Foxtheta <Icon name="arrow" size={17} /></Link></div>
+  </div></section>;
 }

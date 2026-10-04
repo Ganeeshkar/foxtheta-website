@@ -9,15 +9,6 @@
   text-align: center;
 }
 
-.notfound__aura {
-  top: -10%;
-  left: 50%;
-  width: 620px;
-  height: 420px;
-  transform: translateX(-50%);
-  opacity: 0.35;
-}
-
 .notfound__inner {
   position: relative;
   display: flex;
@@ -32,7 +23,7 @@
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.06em;
-  background: linear-gradient(180deg, #ffffff 20%, #4f7ef7 100%);
+  background: linear-gradient(180deg, #0b1733 15%, #2563eb 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -71,7 +62,7 @@
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--color-surface-sunken);
   font-size: var(--text-sm);
   color: var(--color-text-body);
 }

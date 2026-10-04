@@ -3,33 +3,33 @@
   overflow: hidden;
   /* Runs up behind the transparent sticky header — see Hero.css */
   margin-top: calc(-1 * var(--header-height));
-  padding-block: calc(var(--header-height) + clamp(3rem, 6vw, 4.5rem))
+  padding-block: calc(var(--header-height) + clamp(2.5rem, 4.4vw, 3.75rem))
     clamp(2.5rem, 5vw, 4rem);
-  background: linear-gradient(180deg, rgba(37, 99, 235, 0.1) 0%, transparent 70%),
-    var(--color-bg);
-  border-bottom: 1px solid var(--color-border-soft);
-}
-
-.page-hero__grid {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(
-      rgba(148, 163, 184, 0.07) 1px,
-      transparent 1px
+  background:
+    radial-gradient(
+      circle 620px at -12% -30%,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.88) 72%,
+      rgba(255, 255, 255, 0) 73.5%
     ),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 70% 80% at 50% 0%, #000 20%, transparent 75%);
-  pointer-events: none;
-}
-
-.page-hero__aura {
-  top: -180px;
-  left: 50%;
-  width: 640px;
-  height: 420px;
-  transform: translateX(-50%);
-  opacity: 0.45;
+    radial-gradient(
+      circle 420px at 100% -50%,
+      rgba(205, 223, 252, 0.8) 0%,
+      rgba(205, 223, 252, 0.52) 72%,
+      rgba(205, 223, 252, 0) 74%
+    ),
+    radial-gradient(
+      ellipse 42% 70% at 92% 40%,
+      rgba(37, 99, 235, 0.05) 0%,
+      transparent 66%
+    ),
+    linear-gradient(
+      180deg,
+      var(--tint) 0%,
+      var(--tint-soft) 62%,
+      var(--color-bg) 100%
+    );
+  border-bottom: 1px solid var(--color-border-soft);
 }
 
 .page-hero__inner {
@@ -78,9 +78,9 @@
 }
 
 .breadcrumbs a:hover {
-  color: var(--blue-300);
+  color: var(--color-primary);
 }
 
 .breadcrumbs svg {
-  opacity: 0.5;
+  opacity: 0.75;
 }

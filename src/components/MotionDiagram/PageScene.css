@@ -1,0 +1,31 @@
+.page-scene {--diagram-accent:#57dd7d;--scene-accent:#9ef0b5;--scene-grid:#dbe8de;--scene-route:#93c3a2;--scene-stroke:#8fb99c;--scene-ink-soft:#8fb39a;width:100%;min-width:0;color:#7ab68d;padding-top:8px;}
+.page-scene--about {--diagram-accent:#d8a4ea;--scene-accent:#e8c4f3;--scene-route:#c3a6cf;--scene-ink-soft:#b495c2;}
+.page-scene--contact {--scene-accent:#bfe0f6;--scene-route:#93b9d4;--scene-stroke:#93b2c9;--scene-ink-soft:#8eb0c7;--scene-grid:#dce7ef;}
+.page-scene>svg {width:100%;height:auto;overflow:visible;display:block;}
+.page-scene__label {font:11px var(--font-mono);letter-spacing:-.035em;fill:#3c5845;}
+.page-scene__label--muted {fill:#86998c;}
+.page-scene__index {fill:#93a898;}
+.page-scene__note {font:9.5px var(--font-mono);letter-spacing:-.02em;fill:#7c8f82;}
+.page-scene--contact .page-scene__label {fill:#2f4d5f;}
+.page-scene--about .page-scene__label {fill:#4f3f58;}
+.page-scene--about .page-scene__label--muted {fill:#9a8aa3;}
+.page-scene .precision-tag rect {fill:#e3f8e9;}
+.precision-face--blue {fill:#eef6fc;}.precision-face--blue-side {fill:#d4e8f7;}.precision-face--blue-edge {fill:#acd0ee;}
+.page-scene .precision-face--blue,.page-scene .precision-face--blue-side,.page-scene .precision-face--blue-edge {stroke:#93b6cf;}
+/* Small screens: raise the label size so it stays readable once the artwork scales down. */
+@media(max-width:600px) {
+ .page-scene__label {font-size:17px;letter-spacing:-.05em;}
+ .page-scene--contact .page-scene__label {font-size:15.5px;}
+ .page-scene__note {display:none;}
+ .page-scene__index {display:none;}
+}
+/* The label for the current step gets the strongest ink; the rest step back. */
+.page-scene__label {transition:fill .45s;}
+.page-scene__label.is-active {fill:#0f2a18;}
+.page-scene--about .page-scene__label.is-active {fill:#3d2149;}
+.page-route-stop .page-scene__label {fill:#8ea4b3;}
+.page-route-stop .page-scene__note {fill:#a9b8c2;transition:fill .45s;}
+.page-route-stop.is-active .page-scene__label {fill:#163a52;}
+.page-route-stop.is-active .page-scene__note {fill:#4f6f84;}
+.page-scene .precision-tag--active rect {fill:#12301d;stroke:#12301d;}
+.page-scene .precision-tag--active text {fill:#d4fadf;}

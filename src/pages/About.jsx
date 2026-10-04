@@ -1,17 +1,18 @@
 import PageHero from "../components/PageHero/PageHero";
+import PageScene from "../components/MotionDiagram/PageScene";
 import SectionHeading from "../components/SectionHeading/SectionHeading";
 import CTASection from "../components/CTASection/CTASection";
 import Reveal from "../components/Reveal/Reveal";
 import Icon from "../components/Icon/Icon";
 import usePageMeta from "../hooks/usePageMeta";
-import { aboutIntro, story, values, team } from "../data/aboutData";
+import { aboutIntro, story, values } from "../data/aboutData";
 import { siteConfig } from "../data/siteConfig";
 import "./About.css";
 
 export default function About() {
   usePageMeta(
     "About",
-    "Foxtheta is an AI development company building agents, knowledge systems and automation that survive production. Meet the team and how we work."
+    "Foxtheta is an AI development company building agents, knowledge systems and automation that survive production. How we work and what we value."
   );
 
   return (
@@ -21,6 +22,8 @@ export default function About() {
         title={aboutIntro.title}
         lead={aboutIntro.lead}
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "About" }]}
+        visual={<PageScene kind="about" />}
+        accent="violet"
       />
 
       {/* ---------- story ---------- */}
@@ -112,35 +115,6 @@ export default function About() {
         About.css; restore this section once `milestones` in
         src/data/aboutData.js has real entries.
       */}
-
-      {/* ---------- team ---------- */}
-      <section className="section">
-        <div className="container">
-          <SectionHeading
-            eyebrow="The team"
-            title="Who you actually work with"
-            lead="Placeholder profiles — replace names, roles, photos and bios with your real team."
-          />
-
-          <ul className="about-team">
-            {team.map((member, index) => (
-              <Reveal
-                as="li"
-                key={member.id}
-                delay={index * 80}
-                className="about-member"
-              >
-                <span className="about-member__avatar" aria-hidden="true">
-                  {member.initials}
-                </span>
-                <h3 className="about-member__name">{member.name}</h3>
-                <span className="about-member__role">{member.role}</span>
-                <p className="about-member__bio">{member.bio}</p>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </section>
 
       <CTASection
         title="Want to see how we would approach your problem?"

@@ -1,4 +1,5 @@
 import PageHero from "../components/PageHero/PageHero";
+import PageScene from "../components/MotionDiagram/PageScene";
 import Reveal from "../components/Reveal/Reveal";
 import Icon from "../components/Icon/Icon";
 import usePageMeta from "../hooks/usePageMeta";
@@ -32,7 +33,7 @@ const nextSteps = [
 export default function Contact() {
   usePageMeta(
     "Contact",
-    `Talk to Foxtheta about AI agents, automation and custom AI development. Email ${siteConfig.email} or call ${siteConfig.phoneDisplay}.`
+    `Talk to Foxtheta about AI agents, automation and custom AI development. Email ${siteConfig.email} and you will hear back within one business day.`
   );
 
   return (
@@ -40,8 +41,10 @@ export default function Contact() {
       <PageHero
         eyebrow="Contact"
         title="Tell us what needs to work better"
-        lead="No forms, no gatekeeping, no discovery-call funnel. Email or call the team directly and you will reach the people who would do the work."
+        lead="No forms, no gatekeeping, no discovery-call funnel. Email the team directly and you will reach the people who would do the work."
         breadcrumbs={[{ label: "Home", to: "/" }, { label: "Contact" }]}
+        visual={<PageScene kind="contact" />}
+        accent="blue"
       />
 
       <section className="section contact">
@@ -75,38 +78,17 @@ export default function Contact() {
 
             <Reveal delay={90} className="contact__card panel">
               <span className="contact__icon">
-                <Icon name="phone" size={22} />
+                <Icon name="clock" size={22} />
               </span>
-              <h2 className="contact__card-title">Call the team</h2>
-              <p className="contact__card-text">
-                Prefer to talk it through? Reach us during working hours and you
-                will get an engineer, not a switchboard.
-              </p>
-              <a href={`tel:${siteConfig.phoneHref}`} className="contact__value">
-                {siteConfig.phoneDisplay}
-              </a>
-              <p className="contact__meta">
-                <Icon name="clock" size={16} />
-                {siteConfig.hours}
-              </p>
-            </Reveal>
-
-            <Reveal delay={180} className="contact__card panel">
-              <span className="contact__icon">
-                <Icon name="pin" size={22} />
-              </span>
-              <h2 className="contact__card-title">Where we are</h2>
+              <h2 className="contact__card-title">How we work</h2>
               <p className="contact__card-text">
                 We work remotely with clients worldwide and meet in person when
                 a project genuinely benefits from it.
               </p>
-              <address className="contact__address">
-                {siteConfig.address.line1}
-                <br />
-                {siteConfig.address.line2}
-                <br />
-                {siteConfig.address.country}
-              </address>
+              <p className="contact__meta">
+                <Icon name="clock" size={16} />
+                {siteConfig.hours}
+              </p>
               <p className="contact__meta">
                 <Icon name="chat" size={16} />
                 New business: {siteConfig.salesEmail}

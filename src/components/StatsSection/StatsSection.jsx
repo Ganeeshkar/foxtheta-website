@@ -23,7 +23,6 @@ export default function StatsSection() {
 
   return (
     <section className="stats section section--alt" ref={ref}>
-      <div className="stats__glow" aria-hidden="true" />
 
       <div className="container">
         <ul className="stats__grid">

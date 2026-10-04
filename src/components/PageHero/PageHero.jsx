@@ -6,6 +6,8 @@ import "./PageHero.css";
  * Compact hero used at the top of every interior page.
  *
  * @param {Array} breadcrumbs [{ label, to }] — last item renders as plain text
+ * @param {node}  visual      optional illustration; switches to the split layout
+ * @param {string} accent     green | violet | blue — tints the split layout
  */
 export default function PageHero({
   eyebrow,
@@ -13,12 +15,26 @@ export default function PageHero({
   lead,
   breadcrumbs = [],
   children,
+  visual,
+  accent = "green",
 }) {
-  return (
-    <section className="page-hero">
-      <div className="page-hero__grid" aria-hidden="true" />
-      <div className="aura aura--blue page-hero__aura" aria-hidden="true" />
+  const copy = (
+    <>
+      {eyebrow && (
+        <span className="eyebrow eyebrow--pill">
+          <span className="eyebrow__dot" aria-hidden="true" />
+          {eyebrow}
+        </span>
+      )}
 
+      <h1 className="page-hero__title">{title}</h1>
+      {lead && <p className="page-hero__lead lead">{lead}</p>}
+      {children && <div className="page-hero__extra">{children}</div>}
+    </>
+  );
+
+  return (
+    <section className={`page-hero ${visual ? `page-hero--split page-hero--${accent}` : ""}`.trim()}>
       <div className="container page-hero__inner">
         {breadcrumbs.length > 0 && (
           <nav className="breadcrumbs" aria-label="Breadcrumb">
@@ -44,16 +60,12 @@ export default function PageHero({
           </nav>
         )}
 
-        {eyebrow && (
-          <span className="eyebrow eyebrow--pill">
-            <span className="eyebrow__dot" aria-hidden="true" />
-            {eyebrow}
-          </span>
-        )}
-
-        <h1 className="page-hero__title">{title}</h1>
-        {lead && <p className="page-hero__lead lead">{lead}</p>}
-        {children && <div className="page-hero__extra">{children}</div>}
+        {visual ? (
+          <div className="page-hero__grid">
+            <div className="page-hero__copy">{copy}</div>
+            <div className="page-hero__art">{visual}</div>
+          </div>
+        ) : copy}
       </div>
     </section>
   );

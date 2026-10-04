@@ -12,7 +12,8 @@ export default function Reveal({
   className = "",
   ...rest
 }) {
-  const [ref, inView] = useInView();
+  // Section entrances play for every visitor, including reduced-motion settings.
+  const [ref, inView] = useInView({ respectReducedMotion: false });
 
   return (
     <Tag

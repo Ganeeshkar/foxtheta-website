@@ -2,7 +2,7 @@
    Foxtheta — Design Tokens
    Single source of truth for colour, spacing, type and motion.
 
-   THEME: dark (near-black navy) with an electric-blue accent.
+   THEME: white page, neutral slate bands, one blue accent.
    Everything below is a variable — change these values to
    re-skin the whole site without touching component CSS.
    ============================================================ */
@@ -34,60 +34,61 @@
   --slate-800: #1e293b;
   --slate-900: #0f172a;
 
-  /* ---- Dark canvas --------------------------------------- */
-  --ink-950: #04060e; /* page background        */
-  --ink-900: #070b16; /* alternating sections   */
-  --ink-850: #0a1020; /* raised bands           */
-  --ink-800: #0e1526; /* panels                 */
+  /* ---- Canvas ---------------------------------------------
+     White page; bands carry a light blue tint. Cards stay pure
+     white so they still lift off the band behind them. */
+  --ink-950: #ffffff; /* page background        */
+  --ink-900: #f1f6fd; /* alternating sections   */
+  --ink-850: #e8f0fc; /* raised bands           */
+  --ink-800: #ffffff; /* panels / cards         */
+
+  /* ---- Blue atmosphere ------------------------------------
+     The hero, header and footer sit on a soft blue wash so the
+     page reads as one piece instead of white boxes with tinted
+     ends. Content sections stay white; cards stay white. */
+  --tint-strong: #e6eefc; /* hero top, footer top   */
+  --tint: #eff4fd; /* mid wash               */
+  --tint-soft: #f7fafe; /* nearly white           */
 
   /* ---- Semantic roles ------------------------------------ */
-  --color-primary: var(--blue-500);
-  --color-primary-strong: var(--blue-600);
-  --color-primary-hover: var(--blue-400);
+  --color-primary: var(--blue-600);
+  --color-primary-strong: var(--blue-700);
+  --color-primary-hover: var(--blue-700);
+  --color-primary-tint: #eff5ff; /* icon chips, quiet fills  */
+  --color-primary-tint-strong: #dbe8fe;
 
   --color-bg: var(--ink-950);
   --color-bg-alt: var(--ink-900);
   --color-bg-raised: var(--ink-850);
 
-  --color-surface: rgba(255, 255, 255, 0.035);
-  --color-surface-hover: rgba(59, 130, 246, 0.09);
+  --color-surface: #ffffff;
+  --color-surface-hover: #f5f8fe;
   --color-surface-solid: var(--ink-800);
+  --color-surface-sunken: #f2f6fd;
 
-  --color-border: rgba(148, 163, 184, 0.16);
-  --color-border-soft: rgba(148, 163, 184, 0.1);
-  --color-border-strong: rgba(148, 163, 184, 0.3);
-  --color-border-accent: rgba(59, 130, 246, 0.55);
+  --color-border: #dfe7f4;
+  --color-border-soft: #e9eff9;
+  --color-border-strong: #c5d2e6;
+  --color-border-accent: var(--blue-500);
 
-  --color-heading: #f4f7fd;
-  --color-text: #f4f7fd;
-  --color-text-body: #9fb0c9;
-  --color-text-muted: #6f819c;
+  /* Near-black throughout. Hierarchy is carried by size and weight
+     rather than by fading text out to grey, which keeps body copy
+     and captions crisp instead of washed. */
+  --color-heading: #080d16;
+  --color-text: #080d16;
+  --color-text-body: #111827; /* paragraphs               */
+  --color-text-muted: #1f2937; /* captions, meta, labels   */
+  --color-text-subtle: #374151; /* numerals, quiet detail   */
+
+  /* Text that sits on top of a filled blue surface */
+  --color-on-primary: #ffffff;
 
   /* ---- Gradients ----------------------------------------- */
-  --grad-primary: linear-gradient(
-    100deg,
-    var(--blue-600) 0%,
-    var(--blue-500) 55%,
-    #4f7ef7 100%
-  );
-  --grad-text: linear-gradient(
-    100deg,
-    #ffffff 0%,
-    #cfe0ff 40%,
-    var(--blue-400) 100%
-  );
-  --grad-panel: linear-gradient(
-    160deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(255, 255, 255, 0.02) 45%,
-    rgba(255, 255, 255, 0.01) 100%
-  );
-  --grad-panel-hover: linear-gradient(
-    160deg,
-    rgba(59, 130, 246, 0.16) 0%,
-    rgba(37, 99, 235, 0.05) 55%,
-    rgba(255, 255, 255, 0.015) 100%
-  );
+  --grad-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  --grad-text: linear-gradient(100deg, #0f172a 0%, #1d4ed8 55%, #3b82f6 100%);
+  /* Cards are flat white on light — a gradient only muddies them. */
+  --grad-panel: #ffffff;
+  --grad-panel-hover: #ffffff;
 
   /* ---- Spacing scale (8px based) ------------------------- */
   --space-1: 0.25rem; /*  4px */
@@ -101,8 +102,8 @@
   --space-9: 6rem; /* 96px */
   --space-10: 8rem; /* 128px */
 
-  --section-y: clamp(4.5rem, 8vw, 7.5rem);
-  --section-y-sm: clamp(3rem, 5vw, 4.5rem);
+  --section-y: clamp(2.75rem, 4.4vw, 4rem);
+  --section-y-sm: clamp(2rem, 3.2vw, 2.75rem);
 
   /* ---- Layout -------------------------------------------- */
   --container-max: 1240px;
@@ -131,21 +132,26 @@
   --text-xl: 1.25rem;
   --text-2xl: clamp(1.375rem, 2vw, 1.5rem);
   --text-3xl: clamp(1.625rem, 3vw, 2.125rem);
-  --text-4xl: clamp(2rem, 4.2vw, 3rem);
-  --text-5xl: clamp(2.5rem, 6vw, 4.25rem);
+  --text-4xl: clamp(1.875rem, 3.4vw, 2.75rem);
+  --text-5xl: clamp(2.375rem, 5vw, 3.75rem);
   --text-stat: clamp(3.25rem, 9vw, 6rem);
 
   --leading-tight: 1.08;
   --leading-snug: 1.28;
-  --leading-normal: 1.7;
+  --leading-normal: 1.65;
 
   /* ---- Elevation & glow ---------------------------------- */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 18px 40px -18px rgba(0, 0, 0, 0.85);
-  --shadow-lg: 0 40px 80px -32px rgba(0, 0, 0, 0.9);
-  --glow-blue: 0 18px 45px -14px rgba(37, 99, 235, 0.65);
-  --glow-blue-soft: 0 0 0 1px rgba(59, 130, 246, 0.25),
-    0 24px 60px -26px rgba(59, 130, 246, 0.55);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04),
+    0 1px 3px rgba(15, 23, 42, 0.03);
+  --shadow-md: 0 1px 3px rgba(15, 23, 42, 0.05),
+    0 8px 24px -10px rgba(15, 23, 42, 0.12);
+  --shadow-lg: 0 2px 4px rgba(15, 23, 42, 0.04),
+    0 20px 44px -16px rgba(15, 23, 42, 0.18);
+  --shadow-primary: 0 1px 2px rgba(29, 78, 216, 0.2),
+    0 8px 20px -6px rgba(37, 99, 235, 0.32);
+  --glow-blue: var(--shadow-primary);
+  --glow-blue-soft: 0 0 0 1px rgba(37, 99, 235, 0.18),
+    0 12px 28px -10px rgba(15, 23, 42, 0.16);
 
   /* ---- Motion -------------------------------------------- */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -158,5 +164,5 @@
   --z-dropdown: 110;
   --z-mobile-nav: 120;
 
-  color-scheme: dark;
+  color-scheme: light;
 }

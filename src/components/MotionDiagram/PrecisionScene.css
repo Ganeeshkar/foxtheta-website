@@ -1,0 +1,31 @@
+.precision-scene {--diagram-accent:#57dd7d;position:relative;width:100%;min-width:0;color:#7ab68d;padding:10px 0 0;}
+.precision-scene>svg {width:100%;height:auto;overflow:visible;}
+.precision-scene .precision-face {stroke:#86b498;stroke-width:.75;stroke-linejoin:round;}
+.precision-face--white {fill:#fafffb;}.precision-face--white-side {fill:#f0fbf2;}.precision-face--white-edge {fill:#d6f2de;}
+.precision-face--green {fill:#d8f8e1;}.precision-face--green-side {fill:#88eaa3;}.precision-face--green-edge {fill:#4ada74;}
+.precision-face--violet {fill:#f3ddf9;stroke:#c3a2ce!important;}.precision-face--violet-side {fill:#e9b7f3;stroke:#c3a2ce!important;}.precision-face--violet-edge {fill:#dca0ea;stroke:#c3a2ce!important;}
+.precision-face--glass {fill:#e5faecaa;}.precision-face--glass-side {fill:#d5f5dfbb;}.precision-face--glass-edge {fill:#b8ecc9bb;}
+.precision-tag rect {fill:#def8e6;stroke:#a1d6b1;stroke-width:.7;}.precision-tag text {font:11px var(--font-mono);letter-spacing:-.035em;fill:#3a5945;}
+.precision-tag--white rect {fill:#fff;stroke:#b3d1bc;}.precision-tag--violet rect {fill:#f8e9fc;stroke:#e4bced;}.precision-tag--violet text {fill:#71527b;}
+.precision-scene__footer {display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 28px 14px;color:#7e9285;font:9px/1.5 var(--font-mono);}
+.precision-scene__phase {color:#526d5b;}.precision-scene__footer button {display:grid;place-items:center;min-width:36px;min-height:36px;color:#5c7c65;background:none;border:1px solid #dce8df;cursor:pointer;}
+.precision-scene__footer button {min-width:44px;min-height:44px;transition:background-color .2s,border-color .2s;}
+.precision-scene__footer button:hover {background:#e2f5e7;border-color:#9cbda6;}
+.precision-scene__footer button:focus-visible {outline:2px solid #346c45;outline-offset:4px;}
+.precision-scene__footer button[aria-label^="Play"] {background:#eaf7ed;border-color:#a9cbb3;color:#315e3e;}
+.precision-scene[data-kind=knowledge] {--diagram-accent:#dca3ed;}
+@media(max-width:900px) {.precision-scene {max-width:650px;margin:auto;}.precision-scene__footer {margin-inline:20px;font-size:9px;}.precision-tag text {font-size:12px;}}
+@media(max-width:480px) {.precision-scene {padding-top:18px;}.precision-scene__phase {display:none;}.precision-scene__footer {margin:12px 20px 20px;}.precision-registration {display:none;}}
+/* Shared caption bar: step count, step name and a progress line over the loop. */
+.precision-scene__footer {position:relative;padding-top:2px;}
+.precision-scene__progress {position:absolute;left:0;right:0;top:-6px;height:1px;background:#e1eae3;}
+.precision-scene__progress::after {content:"";position:absolute;inset:0;background:#4fcf74;transform:scaleX(var(--scene-progress,0));transform-origin:left;}
+.precision-scene__phase {display:flex;align-items:baseline;gap:10px;font-size:12px;letter-spacing:-.02em;color:#21412c;}
+.precision-scene__count {font-size:9px;color:#7f9585;letter-spacing:.02em;white-space:nowrap;flex:none;}
+@media(max-width:480px) {.precision-scene__phase {display:flex;font-size:11px;}.precision-scene__caption {display:none;}}
+/* Labels for the current step turn dark so the eye follows the story. */
+.precision-tag rect,.precision-tag text {transition:fill .45s,stroke .45s;}
+.precision-tag--active rect {fill:#12301d;stroke:#12301d;}
+.precision-tag--active text {fill:#d4fadf;}
+.precision-tag--violet.precision-tag--active rect {fill:#5b3a69;stroke:#5b3a69;}
+.precision-tag--violet.precision-tag--active text {fill:#f6e6fb;}

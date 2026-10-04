@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
@@ -22,6 +22,7 @@ export default function App() {
       </a>
 
       <ScrollToTop />
+      <div className="announcement"><span>Strategic intelligence. Real impact.</span><Link to="/services">EXPLORE FOXTHETA ↗</Link></div>
       <Header />
 
       {/* `key` restarts the page fade-in on every navigation */}

@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local Netlify folder
+.netlify
+
+# Demo fonts are personal-use only: keep them local, never in Git (see src/main.jsx)
+src/assets/fonts/preview/*.otf
+# Handoff ZIP snapshot (contains the demo fonts)
+deliverables/

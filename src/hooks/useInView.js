@@ -7,12 +7,15 @@ import { useEffect, useRef, useState } from "react";
  * @param {number}  options.threshold  Visible fraction required (0–1)
  * @param {string}  options.rootMargin Margin around the viewport
  * @param {boolean} options.once       Stop observing after the first hit
+ * @param {boolean} options.respectReducedMotion  Report "in view" at once when
+ *                                     the visitor prefers reduced motion
  * @returns {[React.RefObject, boolean]} [ref to attach, isInView]
  */
 export default function useInView({
   threshold = 0.15,
   rootMargin = "0px 0px -60px 0px",
   once = true,
+  respectReducedMotion = true,
 } = {}) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
@@ -26,7 +29,7 @@ export default function useInView({
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    if (prefersReduced || typeof IntersectionObserver === "undefined") {
+    if ((respectReducedMotion && prefersReduced) || typeof IntersectionObserver === "undefined") {
       setInView(true);
       return undefined;
     }
@@ -45,7 +48,7 @@ export default function useInView({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [threshold, rootMargin, once]);
+  }, [threshold, rootMargin, once, respectReducedMotion]);
 
   return [ref, inView];
 }
